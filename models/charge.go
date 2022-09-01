@@ -1,13 +1,12 @@
 package models
 
-import "gorm.io/gorm"
-
-// Charge Model for stripe
 type Charge struct {
-	gorm.Model
+	ID           uint   `json:"id" gorm:"primary_key;auto_increment"`
+	UserID       string `json:"user_id"`
 	Amount       int64  `json:"amount"`
-	ReceiptEmail string `json:"receiptMail"`
-	ProductName  string `json:"productName"`
+	ReceiptEmail string `json:"receipt_email"`
+	CardToken    string `json:"card_token"`
+	Name         string `json:"name"`
 }
 
 func (c *Charge) TableName() string {
